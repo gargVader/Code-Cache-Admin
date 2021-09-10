@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_number": "963816998657",
+    "firebase_url": "https://codechefeventsapp-default-rtdb.firebaseio.com",
+    "project_id": "codechefeventsapp",
+    "storage_bucket": "codechefeventsapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963816998657:android:e308095ed19815ff007d00",
+        "android_client_info": {
+          "package_name": "com.example.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963816998657-eoahrjj6hsmi5l9incg7knurea5co2pp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmeh4jFDihNhkzjdsm85fYR4pAH5QB9UQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963816998657-8fmaood7vlbhqbp6496csbqpehug5k4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963816998657:android:92fb09fefe6ccffb007d00",
+        "android_client_info": {
+          "package_name": "com.example.codechefeventsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963816998657-7ou13utplh96m51b2516icja003grncp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.codechefeventsapp",
+            "certificate_hash": "043d197f405c8cd39808ca4f52a8216838590a55"
+          }
+        },
+        {
+          "client_id": "963816998657-llr1utno4l5p3dg90bgm62dppvp7nhpp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.codechefeventsapp",
+            "certificate_hash": "1886478a4523b2e08ef70a8968689d79ad6054a3"
+          }
+        },
+        {
+          "client_id": "963816998657-lqlrq5t9i3q7j58f65s03lt9pgeau6d5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.codechefeventsapp",
+            "certificate_hash": "4542b48a5a45e22755c55295fd92c104ce5ec529"
+          }
+        },
+        {
+          "client_id": "963816998657-eoahrjj6hsmi5l9incg7knurea5co2pp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmeh4jFDihNhkzjdsm85fYR4pAH5QB9UQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963816998657-8fmaood7vlbhqbp6496csbqpehug5k4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
