@@ -203,11 +203,14 @@
                 android:singleLine="false"
                 app:layout_constraintTop_toBottomOf="@id/text_view_event_description" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_24sdp"
+            <Button
+                android:id="@+id/uploadButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload event"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/eventDescription" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
