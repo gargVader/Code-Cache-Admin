@@ -1,15 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     tools:context=".AddEventFragment">
 
-    <!--  TODO(2):
-            - Add various input fields for Event class
-            - Add a menu item for save button
-     -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingTop="@dimen/_8sdp">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/_8sdp"
+                android:src="@drawable/ic_baseline_local_activity_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/textBlue" />
+
+            <TextView
+                android:id="@+id/text_view_event_name"
+                style="@style/textStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Event Name"
+                app:layout_constraintStart_toEndOf="@id/icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/eventName"
+                style="@style/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:hint="Enter event name"
+                android:paddingHorizontal="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/text_view_event_name" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_8sdp"
+                android:src="@drawable/ic_baseline_location_on_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventName"
+                app:tint="@color/textBlue" />
+
+            <TextView
+                android:id="@+id/text_view_event_location"
+                style="@style/textStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="Location"
+                app:layout_constraintStart_toEndOf="@id/icon"
+                app:layout_constraintTop_toBottomOf="@id/eventName" />
+
+            <EditText
+                android:id="@+id/eventLocation"
+                style="@style/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:hint="Enter event location"
+                android:paddingHorizontal="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@id/text_view_event_location" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_8sdp"
+                android:src="@drawable/ic_baseline_access_time_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventLocation"
+                app:tint="@color/textBlue" />
+
+            <TextView
+                android:id="@+id/text_view_event_date"
+                style="@style/textStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="Date and Time"
+                app:layout_constraintStart_toEndOf="@id/icon"
+                app:layout_constraintTop_toBottomOf="@id/eventLocation" />
+
+            <TextView
+                android:id="@+id/text_view_event_date_display"
+                style="@style/textStyleRegular"
+                android:layout_width="@dimen/_125sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_27sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Choose a date"
+                android:textColor="@color/greyDate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_event_date" />
+
+            <TextView
+                android:id="@+id/text_view_event_time_display"
+                style="@style/textStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Choose a time"
+                android:textColor="@color/greyDate"
+                app:layout_constraintStart_toEndOf="@id/text_view_event_date_display"
+                app:layout_constraintTop_toBottomOf="@id/text_view_event_date" />
+
+            <ImageView
+                android:id="@+id/imageIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/_8sdp"
+                android:src="@drawable/ic_baseline_image_24"
+                app:layout_constraintBottom_toBottomOf="@+id/addImageButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/addImageButton"
+                app:tint="@color/textBlue" />
+
+            <TextView
+                android:id="@+id/addImageButton"
+                style="@style/textStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:background="@drawable/background_button"
+                android:padding="@dimen/_8sdp"
+                android:text="Add an image"
+                app:layout_constraintStart_toEndOf="@id/icon"
+                app:layout_constraintTop_toBottomOf="@id/text_view_event_date_display" />
+
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                app:layout_constraintTop_toBottomOf="@id/addImageButton" />
+
+            <ImageView
+                android:id="@+id/eventImage"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginHorizontal="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:src="@drawable/laptop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progressBar" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_8sdp"
+                android:src="@drawable/ic_baseline_description_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventImage"
+                app:tint="@color/textBlue" />
+
+            <TextView
+                android:id="@+id/text_view_event_description"
+                style="@style/textStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="Description"
+                app:layout_constraintStart_toEndOf="@id/icon"
+                app:layout_constraintTop_toBottomOf="@id/eventImage" />
+
+
+            <EditText
+                android:id="@+id/eventDescription"
+                style="@style/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:hint="Enter event location"
+                android:inputType="textCapSentences|textMultiLine"
+                android:isScrollContainer="true"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:singleLine="false"
+                app:layout_constraintTop_toBottomOf="@id/text_view_event_description" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_24sdp"
+                app:layout_constraintTop_toBottomOf="@id/eventDescription" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 
 </FrameLayout>
