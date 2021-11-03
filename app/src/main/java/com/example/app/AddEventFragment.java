@@ -53,7 +53,8 @@ public class AddEventFragment extends Fragment implements DatePickerDialog.OnDat
     EditText eventNameEditText;
     EditText eventLocationEditText;
     Calendar eventCalendar = Calendar.getInstance();
-    EditText eventDescriptionEditText;
+    EditText eventDescriptionEditText, eventDescriptionShortEditText;
+    EditText eventJoinLinkEditText, eventRecLinkEditText;
     ImageView eventImage;
 
     StorageReference storageReference = FirebaseStorage.getInstance().getReference("image_uploads");
@@ -77,6 +78,9 @@ public class AddEventFragment extends Fragment implements DatePickerDialog.OnDat
         eventNameEditText = view.findViewById(R.id.eventName);
         eventLocationEditText = view.findViewById(R.id.eventLocation);
         eventDescriptionEditText = view.findViewById(R.id.eventDescription);
+        eventDescriptionShortEditText = view.findViewById(R.id.eventDescriptionShort);
+        eventJoinLinkEditText = view.findViewById(R.id.eventJoinLink);
+        eventRecLinkEditText = view.findViewById(R.id.eventRecLink);
         eventImage = view.findViewById(R.id.eventImage);
 
 
@@ -144,58 +148,64 @@ public class AddEventFragment extends Fragment implements DatePickerDialog.OnDat
         Event event = new Event();
         event.setEventTitle(eventNameEditText.getText().toString().trim());
         event.setEventLocation(eventLocationEditText.getText().toString().trim());
-        event.setEventTimeStamp(String.valueOf((eventCalendar.getTime().getTime() / 1000)));
+        event.setEventStartTimeStamp(String.valueOf((eventCalendar.getTime().getTime() / 1000)));
+        event.setEventShortDescription(eventDescriptionShortEditText.getText().toString().trim());
+        event.setEventLongDescription(eventDescriptionEditText.getText().toString().trim());
+        event.setEventJoinLink(eventJoinLinkEditText.getText().toString().trim());
+        event.setEventRecLink(eventRecLinkEditText.getText().toString().trim());
 
-        if (imageUri == null) {
-            imageUri = resIdToUri(getContext(), R.drawable.laptop);
-        }
-        StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
-        UploadTask uploadTask = fileReference.putFile(imageUri);
+        if (imageUri != null) {
+            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
+            UploadTask uploadTask = fileReference.putFile(imageUri);
 
-        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(getContext(), "Upload successful", Toast.LENGTH_SHORT).show();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        progressBar.setProgress(0);
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(getContext(), "Upload successful", Toast.LENGTH_SHORT).show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setProgress(0);
+                        }
+                    }, 500);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getContext(), "Upload failed", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                    double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                    progressBar.setProgress((int) progress);
+                }
+            }).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
                     }
-                }, 500);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getContext(), "Upload failed", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
-                progressBar.setProgress((int) progress);
-            }
-        }).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-            @Override
-            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                if (!task.isSuccessful()) {
-                    throw task.getException();
+                    // Continue with the task to get the download URL
+                    return fileReference.getDownloadUrl();
                 }
-                // Continue with the task to get the download URL
-                return fileReference.getDownloadUrl();
-            }
-        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                if (task.isSuccessful()) {
-                    Uri downloadUri = task.getResult();
-                    event.setEventImageUrl(downloadUri.toString());
-                    collectionReference.add(event);
-                } else {
-                    // Handle failures
-                    // ...
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        Uri downloadUri = task.getResult();
+                        event.setEventImageUrl(downloadUri.toString());
+                        collectionReference.add(event);
+                    } else {
+                        // Handle failures
+                        // ...
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            event.setEventImageUrl(null);
+            collectionReference.add(event);
+        }
 
     }
 

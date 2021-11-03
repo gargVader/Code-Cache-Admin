@@ -16,7 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingTop="@dimen/_8sdp">
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            >
 
             <ImageView
                 android:id="@+id/icon"
@@ -33,7 +35,7 @@
                 style="@style/textStyleRegular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Event Name"
+                android:text="Event Name*"
                 app:layout_constraintStart_toEndOf="@id/icon"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:text="Location"
+                android:text="Location*"
                 app:layout_constraintStart_toEndOf="@id/icon"
                 app:layout_constraintTop_toBottomOf="@id/eventName" />
 
@@ -95,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:text="Date and Time"
+                android:text="Date and Time*"
                 app:layout_constraintStart_toEndOf="@id/icon"
                 app:layout_constraintTop_toBottomOf="@id/eventLocation" />
 
@@ -141,7 +143,7 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:background="@drawable/background_button"
                 android:padding="@dimen/_8sdp"
-                android:text="Add an image"
+                android:text="Add an image*"
                 app:layout_constraintStart_toEndOf="@id/icon"
                 app:layout_constraintTop_toBottomOf="@id/text_view_event_date_display" />
 
@@ -177,6 +179,43 @@
                 app:tint="@color/textBlue" />
 
             <TextView
+                android:id="@+id/text_view_event_description_short"
+                style="@style/textStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="Short Description"
+                app:layout_constraintStart_toEndOf="@id/icon"
+                app:layout_constraintTop_toBottomOf="@id/eventImage" />
+
+
+            <EditText
+                android:id="@+id/eventDescriptionShort"
+                style="@style/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:hint="Enter short description (optional)"
+                android:inputType="textCapSentences|textMultiLine"
+                android:isScrollContainer="true"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:singleLine="false"
+                app:layout_constraintTop_toBottomOf="@id/text_view_event_description_short" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_8sdp"
+                android:src="@drawable/ic_baseline_description_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventDescriptionShort"
+                app:tint="@color/textBlue" />
+
+            <TextView
                 android:id="@+id/text_view_event_description"
                 style="@style/textStyleRegular"
                 android:layout_width="wrap_content"
@@ -184,7 +223,7 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:text="Description"
                 app:layout_constraintStart_toEndOf="@id/icon"
-                app:layout_constraintTop_toBottomOf="@id/eventImage" />
+                app:layout_constraintTop_toBottomOf="@id/eventDescriptionShort" />
 
 
             <EditText
@@ -195,7 +234,7 @@
                 android:layout_marginStart="@dimen/_25sdp"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginBottom="@dimen/_16sdp"
-                android:hint="Enter event location"
+                android:hint="Enter description"
                 android:inputType="textCapSentences|textMultiLine"
                 android:isScrollContainer="true"
                 android:paddingHorizontal="@dimen/_8sdp"
@@ -203,14 +242,91 @@
                 android:singleLine="false"
                 app:layout_constraintTop_toBottomOf="@id/text_view_event_description" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_8sdp"
+                android:src="@drawable/ic_baseline_link_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventDescription"
+                app:tint="@color/textBlue" />
+
+            <TextView
+                android:id="@+id/text_view_event_join_link"
+                style="@style/textStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="Event Join Link"
+                app:layout_constraintStart_toEndOf="@id/icon"
+                app:layout_constraintTop_toBottomOf="@id/eventDescription" />
+
+
+            <EditText
+                android:id="@+id/eventJoinLink"
+                style="@style/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:hint="Enter join link"
+                android:inputType="textCapSentences|textMultiLine"
+                android:isScrollContainer="true"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:singleLine="false"
+                app:layout_constraintTop_toBottomOf="@id/text_view_event_join_link" />
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_8sdp"
+                android:src="@drawable/youtube"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventJoinLink"
+                 />
+
+            <TextView
+                android:id="@+id/text_view_event_rec_link"
+                style="@style/textStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="Youtube Recording"
+                app:layout_constraintStart_toEndOf="@id/icon"
+                app:layout_constraintTop_toBottomOf="@id/eventJoinLink" />
+
+
+            <EditText
+                android:id="@+id/eventRecLink"
+                style="@style/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:hint="Enter youtube link"
+                android:inputType="textCapSentences|textMultiLine"
+                android:isScrollContainer="true"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:singleLine="false"
+                app:layout_constraintTop_toBottomOf="@id/text_view_event_rec_link" />
+
+
             <Button
                 android:id="@+id/uploadButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload event"
+                android:text="Upload event 🥳"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:backgroundTint="@color/greenJoinBtnColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/eventDescription" />
+                app:layout_constraintTop_toBottomOf="@id/eventRecLink" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
