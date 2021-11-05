@@ -13,19 +13,6 @@ public class Event {
     private String eventShortDescription;
     private String eventLongDescription;
     private String eventImageUrl;
-    private String id;
-
-    public Event(String eventTitle, String eventLocation, String eventStartTimeStamp, String eventEndTimeStamp, String eventJoinLink, String eventRecLink, String eventShortDescription, String eventLongDescription, String eventImageUrl) {
-        this.eventTitle = eventTitle;
-        this.eventLocation = eventLocation;
-        this.eventStartTimeStamp = eventStartTimeStamp;
-        this.eventEndTimeStamp = eventEndTimeStamp;
-        this.eventJoinLink = eventJoinLink;
-        this.eventRecLink = eventRecLink;
-        this.eventShortDescription = eventShortDescription;
-        this.eventLongDescription = eventLongDescription;
-        this.eventImageUrl = eventImageUrl;
-    }
 
     public Event(){
 
@@ -103,11 +90,18 @@ public class Event {
         this.eventImageUrl = eventImageUrl;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventTitle='" + eventTitle + '\'' +
+                ", eventLocation='" + eventLocation + '\'' +
+                ", eventStartTimeStamp='" + eventStartTimeStamp + '\'' +
+                ", eventEndTimeStamp='" + eventEndTimeStamp + '\'' +
+                ", eventJoinLink='" + eventJoinLink + '\'' +
+                ", eventRecLink='" + eventRecLink + '\'' +
+                ", eventShortDescription='" + eventShortDescription + '\'' +
+                ", eventLongDescription='" + eventLongDescription + '\'' +
+                ", eventImageUrl='" + eventImageUrl + '\'' +
+                '}';
     }
 }

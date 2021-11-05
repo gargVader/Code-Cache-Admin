@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -38,6 +39,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import static com.example.app.MainActivity.TAG;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -153,6 +155,8 @@ public class AddEventFragment extends Fragment implements DatePickerDialog.OnDat
         event.setEventLongDescription(eventDescriptionEditText.getText().toString().trim());
         event.setEventJoinLink(eventJoinLinkEditText.getText().toString().trim());
         event.setEventRecLink(eventRecLinkEditText.getText().toString().trim());
+
+        Log.d(TAG, "uploadEvent: "+event.toString());
 
         if (imageUri != null) {
             StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));

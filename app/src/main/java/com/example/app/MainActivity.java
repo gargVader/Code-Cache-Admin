@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     NavController navController;
 
+    public static final String TAG = "Codechef";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
